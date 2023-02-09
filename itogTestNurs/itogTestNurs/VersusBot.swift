@@ -27,13 +27,16 @@ class VersusBot: Game{
     
     override func startGame() {
         var endBot = false
+        print("Введите ник первого игрока")
+        let inputFirstUser = readLine()!
+        print("Ваш ник - \(inputFirstUser)")
+        
         while(!endBot){
             print("Игра с Ботом")
             print("Кайф! Вы начали игру с Ботом!")
+            print("Вы начинаете первым \(inputFirstUser)! - X")
             
-            print("Вы начинаете первым! - X")
-            
-            print(showInfo())
+            showInfo()
             
             print("Выберите столбец 1...3")
             let stolbes = readLine()!
@@ -45,21 +48,17 @@ class VersusBot: Game{
                     firstCell[0] = "X"
                 }
             } else if stolbes == "1" && stroka == "2"{
-                
                 if firstCell[1] != "O" || firstCell[1] != "X"{
                     firstCell[1] = "X"
                 }
-                
             } else if stolbes == "1" && stroka == "3"{
                 if firstCell[2] != "O" || firstCell[2] != "X"{
                     firstCell[2] = "X"
                 }
-                
             } else if stolbes == "2" && stroka == "1"{
                 if secondCell[0] != "O" || secondCell[0] != "X"{
                     secondCell[0] = "X"
                 }
-                
             } else if stolbes == "2" && stroka == "2"{
                 if secondCell[1] != "O" || secondCell[1] != "X"{
                     secondCell[1] = "X"
@@ -68,24 +67,27 @@ class VersusBot: Game{
                 if secondCell[2] != "O" || secondCell[2] != "X"{
                     secondCell[2] = "X"
                 }
-                
-            } else if stolbes == "1" && stroka == "1"{
+            } else if stolbes == "3" && stroka == "1"{
                 if threeCell[0] != "O" || threeCell[0] != "X"{
                     threeCell[0] = "X"
                 }
-                
-            } else if stolbes == "1" && stroka == "2"{
+            } else if stolbes == "3" && stroka == "2"{
                 if threeCell[1] != "O" || threeCell[1] != "X"{
                     threeCell[1] = "X"
                 }
-            } else if stolbes == "1" && stroka == "3"{
+            } else if stolbes == "3" && stroka == "3"{
                 if threeCell[2] != "O" || threeCell[2] != "X"{
                     threeCell[2] = "X"
                 }
             } else {
                 print("Нет такого столбца или строки!")
             }
-            print(showInfo())
+            if firstCell[0] == "X" && firstCell[1] == "X" && firstCell[2] == "X" || secondCell[0] == "X" && secondCell[1] == "X" && secondCell[2] == "X" || threeCell[0] == "X" && threeCell[1] == "X" && threeCell[2] == "X" || firstCell[0] == "X" && secondCell[0] == "X" && threeCell[0] == "X" || firstCell[1] == "X" && secondCell[1] == "X" && threeCell[1] == "X" || firstCell[2] == "X" && secondCell[2] == "X" && threeCell[2] == "X" || firstCell[0] == "X" && secondCell[1] == "X" && threeCell[2] == "X" || firstCell[2] == "X" && secondCell[1] == "X" && threeCell[0] == "X"{
+                print("Вы выиграли!")
+                endBot = true
+                break
+            }
+            showInfo()
             
             print("Теперь черед Бота")
             
@@ -130,21 +132,13 @@ class VersusBot: Game{
                 if threeCell[2] != "X" || threeCell[2] != "O"{
                     threeCell[2] = "O"
                 }
-            }
-            
-            if firstCell[0] == "X" && firstCell[1] == "X" && firstCell[2] == "X" || secondCell[0] == "X" && secondCell[1] == "X" && secondCell[2] == "X" || threeCell[0] == "X" && threeCell[1] == "X" && threeCell[2] == "X" || firstCell[0] == "X" && secondCell[0] == "X" && threeCell[0] == "X" || firstCell[1] == "X" && secondCell[1] == "X" && threeCell[1] == "X" || firstCell[2] == "X" && secondCell[2] == "X" && threeCell[2] == "X" || firstCell[0] == "X" && secondCell[1] == "X" && threeCell[2] == "X" || firstCell[2] == "X" && secondCell[1] == "X" && threeCell[0] == "X"{
-                print("Вы выиграли!")
-                endBot = true
-                break
-            }
-            
+            } 
             if firstCell[0] == "O" && firstCell[1] == "O" && firstCell[2] == "O" || secondCell[0] == "O" && secondCell[1] == "O" && secondCell[2] == "O" || threeCell[0] == "O" && threeCell[1] == "O" && threeCell[2] == "O" || firstCell[0] == "O" && secondCell[0] == "O" && threeCell[0] == "O" || firstCell[1] == "O" && secondCell[1] == "O" && threeCell[1] == "O" || firstCell[2] == "O" && secondCell[2] == "O" && threeCell[2] == "O" || firstCell[0] == "O" && secondCell[1] == "O" && threeCell[2] == "O" || firstCell[2] == "O" && secondCell[1] == "O" && threeCell[0] == "O"{
                 print("Бот выиграл!")
                 endBot = true
                 break
             }
         }
-        
         func endGame() {
             print("Игра закончилась!")
         }
