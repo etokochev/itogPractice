@@ -18,94 +18,141 @@ import Foundation
 
 class GameAgainstMan: Game {
     var krestikiNoliki = [Game]()
-
+    
     init(firstCell: [String], secondCell: [String], threeCell: [String], krestikiNoliki: [Game] = [Game]()) {
         self.krestikiNoliki = krestikiNoliki
         super.init(firstCell: firstCell, secondCell: secondCell, threeCell: threeCell)
     }
-
+    
     override func startGame() {
         var round = false
+        print("Введите ник первого игрока")
+        let inputFirstUser = readLine()!
+        print("Ваш ник - \(inputFirstUser)")
+        
+        print("Введите ник второго игрока")
+        let inputSecondUser = readLine()!
+        print("Ваш ник - \(inputSecondUser)")
+
         while(!round){
-
             print("Кайф! Вы начали игру с Другом!")
-            print("Вы начинаете первым! - X")
-
-            print(showInfo())
-
+            print("Вы начинаете \(inputFirstUser)! - X")
+            showInfo()
+            
             print("Выберите столбец 1...3")
-            var stolbes = readLine()!
+            let stolbes = readLine()!
             print("Выберите строку 1...3")
-            var stroka = readLine()!
-
+            let stroka = readLine()!
+            
             if stolbes == "1" && stroka == "1"{
-                firstCell[0] = "X"
+                if firstCell[0] != "O" || firstCell[0] != "X"{
+                    firstCell[0] = "X"
+                }
             } else if stolbes == "1" && stroka == "2"{
-                firstCell[1] = "X"
+                if firstCell[1] != "O" || firstCell[1] != "X"{
+                    firstCell[1] = "X"
+                }
             } else if stolbes == "1" && stroka == "3"{
-                firstCell[2] = "X"
+                if firstCell[2] != "O" || firstCell[2] != "X"{
+                    firstCell[2] = "X"
+                }
             } else if stolbes == "2" && stroka == "1"{
-                secondCell[0] = "X"
+                if secondCell[0] != "O" || secondCell[0] != "X"{
+                    secondCell[0] = "X"
+                }
             } else if stolbes == "2" && stroka == "2"{
-                secondCell[1] = "X"
+                if secondCell[1] != "O" || secondCell[1] != "X"{
+                    secondCell[1] = "X"
+                }
             } else if stolbes == "2" && stroka == "3"{
-                secondCell[2] = "X"
+                if secondCell[2] != "O" || secondCell[2] != "X"{
+                    secondCell[2] = "X"
+                }
             } else if stolbes == "3" && stroka == "1"{
-                threeCell[0] = "X"
+                if threeCell[0] != "O" || threeCell[0] != "X"{
+                    threeCell[0] = "X"
+                }
             } else if stolbes == "3" && stroka == "2"{
-                threeCell[1] = "X"
+                if threeCell[1] != "O" || threeCell[1] != "X"{
+                    threeCell[1] = "X"
+                }
             } else if stolbes == "3" && stroka == "3"{
-                threeCell[2] = "X"
+                if threeCell[2] != "O" || threeCell[2] != "X"{
+                    threeCell[2] = "X"
+                }
             } else {
                 print("Нет такого столбца или строки!")
             }
-            print(showInfo())
-
+            if firstCell[0] == "X" && firstCell[1] == "X" && firstCell[2] == "X" ||
+                secondCell[0] == "X" && secondCell[1] == "X" && secondCell[2] == "X" ||
+                threeCell[0] == "X" && threeCell[1] == "X" && threeCell[2] == "X" ||
+                firstCell[0] == "X" && secondCell[0] == "X" && threeCell[0] == "X" ||
+                firstCell[1] == "X" && secondCell[1] == "X" && threeCell[1] == "X" ||
+                firstCell[2] == "X" && secondCell[2] == "X" && threeCell[2] == "X" ||
+                firstCell[0] == "X" && secondCell[1] == "X" && threeCell[2] == "X" ||
+                firstCell[2] == "X" && secondCell[1] == "X" && threeCell[0] == "X"{
+                print("Вы выиграли! \(inputFirstUser)")
+                round = true
+                break
+            }
+            showInfo()
+            
             print("Теперь черед второго игрока!")
-            print("Вы начинаете! - O")
-
+            print("Вы начинаете \(inputSecondUser)! - O")
+            
             print("Выберите столбец 1...3")
-            var stolbesSecond = readLine()!
+            let stolbesSecond = readLine()!
             print("Выберите строку 1...3")
-            var strokaSecond = readLine()!
-
+            let strokaSecond = readLine()!
+            
             if stolbesSecond == "1" && strokaSecond == "1"{
-                firstCell[0] = "O"
+                if firstCell[0] != "X" || firstCell[0] != "O"{
+                    firstCell[0] = "O"
+                }
             } else if stolbesSecond == "1" && strokaSecond == "2"{
-                firstCell[1] = "O"
+                if firstCell[1] != "X" || firstCell[1] != "O"{
+                    firstCell[1] = "O"
+                }
             } else if stolbesSecond == "1" && strokaSecond == "3"{
-                firstCell[2] = "O"
+                if firstCell[2] != "X" || firstCell[2] != "O"{
+                    firstCell[2] = "O"
+                }
             } else if stolbesSecond == "2" && strokaSecond == "1"{
-                secondCell[0] = "O"
+                if secondCell[0] != "X" || secondCell[0] != "O"{
+                    secondCell[0] = "O"
+                }
             } else if stolbesSecond == "2" && strokaSecond == "2"{
-                secondCell[1] = "O"
+                if secondCell[1] != "X" || secondCell[1] != "O"{
+                    secondCell[1] = "O"
+                }
             } else if stolbesSecond == "2" && strokaSecond == "3"{
-                secondCell[2] = "O"
+                if secondCell[2] != "X" || secondCell[2] != "O"{
+                    secondCell[2] = "O"
+                }
             } else if stolbesSecond == "3" && strokaSecond == "1"{
-                threeCell[0] = "O"
+                if threeCell[0] != "X" || threeCell[0] != "O"{
+                    threeCell[0] = "O"
+                }
             } else if stolbesSecond == "3" && strokaSecond == "2"{
-                threeCell[1] = "O"
+                if threeCell[1] != "X" || threeCell[1] != "O"{
+                    threeCell[1] = "O"
+                }
             } else if stolbesSecond == "3" && strokaSecond == "3"{
-                threeCell[2] = "O"
-            } else {
-                print("Нет такого столбца или строки!")
+                if threeCell[2] != "X" || threeCell[2] != "O"{
+                    threeCell[2] = "O"
+                } else {
+                    print("Нет такого столбца или строки!")
+                }
+                if firstCell[0] == "O" && firstCell[1] == "O" && firstCell[2] == "O" || secondCell[0] == "O" && secondCell[1] == "O" && secondCell[2] == "O" || threeCell[0] == "O" && threeCell[1] == "O" && threeCell[2] == "O" || firstCell[0] == "O" && secondCell[0] == "O" && threeCell[0] == "O" || firstCell[1] == "O" && secondCell[1] == "O" && threeCell[1] == "O" || firstCell[2] == "O" && secondCell[2] == "O" && threeCell[2] == "O" || firstCell[0] == "O" && secondCell[1] == "O" && threeCell[2] == "O" || firstCell[2] == "O" && secondCell[1] == "O" && threeCell[0] == "O"{
+                    print("Вы выиграли! \(inputSecondUser)")
+                    round = true
+                    break
+                }
             }
-
-            if firstCell[0] == "X" && firstCell[1] == "X" && firstCell[2] == "X" || secondCell[0] == "X" && secondCell[1] == "X" && secondCell[2] == "X" || threeCell[0] == "X" && threeCell[1] == "X" && threeCell[2] == "X" || firstCell[0] == "X" && secondCell[0] == "X" && threeCell[0] == "X" || firstCell[1] == "X" && secondCell[1] == "X" && threeCell[1] == "X" || firstCell[2] == "X" && secondCell[2] == "X" && threeCell[2] == "X" || firstCell[0] == "X" && secondCell[1] == "X" && threeCell[2] == "X" || firstCell[2] == "X" && secondCell[1] == "X" && threeCell[0] == "X"{
-                print("Вы выиграли 1 - игрок")
-                round = true
-                break
+            func endGame() {
+                print("Игра закончилась!")
             }
-
-            if firstCell[0] == "O" && firstCell[1] == "O" && firstCell[2] == "O" || secondCell[0] == "O" && secondCell[1] == "O" && secondCell[2] == "O" || threeCell[0] == "O" && threeCell[1] == "O" && threeCell[2] == "O" || firstCell[0] == "O" && secondCell[0] == "O" && threeCell[0] == "O" || firstCell[1] == "O" && secondCell[1] == "O" && threeCell[1] == "O" || firstCell[2] == "O" && secondCell[2] == "O" && threeCell[2] == "O" || firstCell[0] == "O" && secondCell[1] == "O" && threeCell[2] == "O" || firstCell[2] == "O" && secondCell[1] == "O" && threeCell[0] == "O"{
-                print("Вы выиграли 2 - игрок")
-                round = true
-                break
-            }
+            endGame()
         }
-        func endGame() {
-            print("Игра закончилась!")
-        }
-        endGame()
     }
 }
